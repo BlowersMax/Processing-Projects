@@ -16,42 +16,6 @@ void setup() {
 String shape = "f";
 int clr = #CB2B2B;
 
-// The face drawer
-void faceDraw(int mx, int my) {
-  // DEBUG: println("face Draw - " + " mX " + mx + " mY " + my);
-  // The face shapes
-  fill(clr);
-  strokeWeight(2);
-  ellipse(mx + 20, my - 5, 15, 15);
-  ellipse(mx - 20, my - 5, 15, 15);
-  triangle(mx+15, my+20, mx, my, mx-15, my+20);
-  rect(mx - 19, my + 25, 40, 10);
-}
-
-// Draw the target
-void targetDraw(int mx, int my) {
-  // DEBUG: println("target Draw - " + " mX " + mx + " mY " + my);
-  // The target shapes
-  fill(clr);
-  strokeWeight(5);
-  stroke(#000000);
-  ellipse(mx, my, 55, 55);
-  ellipse(mx, my, 35, 35);
-  ellipse(mx, my, 15, 15);
-}
-
-// Draw the arrows
-void arrowDraw(int mx, int my) {
-  // DEBUG: println("arrow Draw - " + " mX " + mx + " mY " + my);
-  // The arrow shapes
-  fill(clr);
-  strokeWeight(2);
-  stroke(#ffffff);
-  triangle(mx-20, my+5, mx, my-15, mx, my+25);
-  rect(mx, my+1, 15, 8);
-  triangle(mx+35, my+5, mx+15, my-15, mx+15, my+25);
-}
-
 // The drawy part of the project
 void draw() {
   // Determine key pressed and which and set accordingly
@@ -83,11 +47,26 @@ void draw() {
   // draw the stuffs
   if (mousePressed == true) {
     if (shape == "f") {
-      faceDraw(mouseX, mouseY);
+      fill(clr);
+      strokeWeight(2);
+      ellipse(mouseX + 20, mouseY - 5, 15, 15);
+      ellipse(mouseX - 20, mouseY - 5, 15, 15);
+      triangle(mouseX+15, mouseY+20, mouseX, mouseY, mouseX-15, mouseY+20);
+      rect(mouseX - 19, mouseY + 25, 40, 10);
     } else if (shape == "t") {
-      targetDraw(mouseX, mouseY);
+      fill(clr);
+      strokeWeight(5);
+      stroke(#000000);
+      ellipse(mouseX, mouseY, 55, 55);
+      ellipse(mouseX, mouseY, 35, 35);
+      ellipse(mouseX, mouseY, 15, 15);
     } else if (shape == "a") {
-      arrowDraw(mouseX, mouseY);
+      fill(clr);
+      strokeWeight(2);
+      stroke(#ffffff);
+      triangle(mouseX-20, mouseY+5, mouseX, mouseY-15, mouseX, mouseY+25);
+      rect(mouseX, mouseY+1, 15, 8);
+      triangle(mouseX+35, mouseY+5, mouseX+15, mouseY-15, mouseX+15, mouseY+25);
     } else {
       return;
     }
