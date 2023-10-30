@@ -8,16 +8,13 @@
 // Setup the application
 void setup() {
   size(500, 500);
-  background(#2BACEA);
+  // background(#2BACEA);
+  makeTiles();
 }
-
-// variables that are needed to ensure that things work
-int circlePos = 0;
 
 // the stuff that calls the lame functions
 void draw() {
-  makeTiles();
-  drawNMoveCircle();
+  drawCircle();
 }
 
 // the logic that draws the fancy schmancy tiles (drawn L2R)
@@ -47,7 +44,20 @@ void makeTiles() {
   }
 }
 
-void drawNMoveCircle() {
+void drawCircle() {
+  // ints for moving
+  int circlePosX = 50;
+  int circlePosY = 50;
   fill(#FFA148);
-  ellipse(50, 50, 75, 75);
+  if (keyPressed == true) {
+    if (key == 's') {
+      circlePosY += 100;
+    } else {
+      return;
+    }
+  } else {
+    return;
+  }
+
+  ellipse(circlePosX, circlePosY, 75, 75);
 }
