@@ -17,12 +17,13 @@ int circlePos = 0;
 // the stuff that calls the lame functions
 void draw() {
   makeTiles();
+  drawNMoveCircle();
 }
 
 // the logic that draws the fancy schmancy tiles (drawn L2R)
 void makeTiles() {
-  stroke(#2BACEA);
   fill(#2D86B2);
+  stroke(#2BACEA);
   strokeWeight(5);
   // first row
   for (int i = 0; i <= 5; i += 1) {
@@ -44,4 +45,9 @@ void makeTiles() {
   for (int i = 0; i <= 5; i += 1) {
     rect(i*100, 400, 100, 100);
   }
+}
+
+void drawNMoveCircle() {
+  fill(#FFA148);
+  ellipse(50, 50, 75, 75);
 }
