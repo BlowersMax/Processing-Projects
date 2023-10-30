@@ -72,12 +72,16 @@ void checkCircle() {
     circlePosX = 50;
   } else if (circlePosY < 50) {
     circlePosY = 50;
+  } else if (circlePosX == 450 && circlePosY == 450) {
+    // DEBUG: println("You Win!");
+    fill(#F70C30);
+    textSize(75);
+    text("You Win!", 125, 250);
   }
 }
 
+// 
 void drawCircle() {
-  // ints for moving
   fill(#FFA148);
-
   ellipse(circlePosX, circlePosY, 75, 75);
 }
