@@ -63,13 +63,14 @@ void keyPressed() {
   }
 }
 
+// Make sure the circle doesn't do stuff its not supposed to
 void checkCircle() {
-  if (circlePosY > 450) {
-    circlePosY = 450;
-  } else if (circlePosX > 450) {
+  if (circlePosX > 450) {
     circlePosX = 450;
   } else if (circlePosX < 50) {
     circlePosX = 50;
+  } else if (circlePosY > 450) {
+    circlePosY = 450;
   } else if (circlePosY < 50) {
     circlePosY = 50;
   } else if (circlePosX == 450 && circlePosY == 450) {
@@ -80,8 +81,13 @@ void checkCircle() {
   }
 }
 
-// 
+// Draw the circle
 void drawCircle() {
   fill(#FFA148);
   ellipse(circlePosX, circlePosY, 75, 75);
+}
+
+// draw squares tat can't be moved onto
+void drawObstcls() {
+
 }
