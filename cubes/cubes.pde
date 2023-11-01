@@ -86,7 +86,6 @@ void drawCircle() {
   ellipse(circlePosX, circlePosY, 75, 75);
 }
 
-
 // Listen and move character across screen
 void keyPressed() {
   if (key == 's') {
