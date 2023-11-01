@@ -54,6 +54,12 @@ void drawSqurs() {
   fill(#EACE2B);
   rect(100, 200, 100, 100);
   rect(300, 200, 100, 100);
+  // Red Start Square
+  fill(#EA2626);
+  rect(0, 0, 100, 100);
+  // Green Winning Square
+  fill(#19F530);
+  rect(400, 400, 100, 100);
 }
 
 // Make sure the circle doesn't do stuff its not supposed to
@@ -66,8 +72,6 @@ void checkCircle() {
     circlePosY = 450;
   } else if (circlePosY < 50) {
     circlePosY = 50;
-  } else if (circlePosX == 350 && circlePosY == 250) {
-    println("Right Square");
   } else if (circlePosX == 450 && circlePosY == 450) {
     // DEBUG: println("You Win!");
     fill(#F70C30);
@@ -86,15 +90,31 @@ void drawCircle() {
 // Listen and move character across screen
 void keyPressed() {
   if (key == 's') {
-    circlePosY += 100;
+    if (circlePosX == 150 && circlePosY == 150 || circlePosX == 350 && circlePosY == 150) {
+      return;
+    } else {
+      circlePosY += 100;
+    }
   }
   if (key == 'w') {
-    circlePosY -= 100;
+    if (circlePosX == 150 && circlePosY == 350 || circlePosX == 350 && circlePosY == 350) {
+      return;
+    } else {
+      circlePosY -= 100;
+    }
   }
   if (key == 'a') {
-    circlePosX -= 100;
+    if (circlePosX == 250 && circlePosY == 250 || circlePosX == 450 && circlePosY == 250) {
+      return;
+    } else {
+      circlePosX -= 100;
+    }
   }
   if (key == 'd') {
-    circlePosX += 100;
+    if (circlePosX == 50 && circlePosY == 250 || circlePosX == 250 && circlePosY == 250) {
+      return;
+    } else {
+      circlePosX += 100;
+    }
   }
 }
