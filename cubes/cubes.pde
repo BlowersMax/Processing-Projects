@@ -17,6 +17,7 @@ int circlePosY = 50;
 // the stuff that calls the lame functions
 void draw() {
   makeTiles();
+  drawSqurs();
   drawCircle();
   checkCircle();
 }
@@ -48,19 +49,11 @@ void makeTiles() {
   }
 }
 
-void keyPressed() {
-  if (key == 's') {
-    circlePosY += 100;
-  }
-  if (key == 'w') {
-    circlePosY -= 100;
-  }
-  if (key == 'a') {
-    circlePosX -= 100;
-  }
-  if (key == 'd') {
-    circlePosX += 100;
-  }
+// draws starting, ending, and middle squares
+void drawSqurs() {
+  fill(#EACE2B);
+  rect(100, 200, 100, 100);
+  rect(300, 200, 100, 100);
 }
 
 // Make sure the circle doesn't do stuff its not supposed to
@@ -73,6 +66,8 @@ void checkCircle() {
     circlePosY = 450;
   } else if (circlePosY < 50) {
     circlePosY = 50;
+  } else if (circlePosX == 350 && circlePosY == 250) {
+    println("Right Square");
   } else if (circlePosX == 450 && circlePosY == 450) {
     // DEBUG: println("You Win!");
     fill(#F70C30);
@@ -87,7 +82,19 @@ void drawCircle() {
   ellipse(circlePosX, circlePosY, 75, 75);
 }
 
-// draw squares tat can't be moved onto
-void drawObstcls() {
 
+// Listen and move character across screen
+void keyPressed() {
+  if (key == 's') {
+    circlePosY += 100;
+  }
+  if (key == 'w') {
+    circlePosY -= 100;
+  }
+  if (key == 'a') {
+    circlePosX -= 100;
+  }
+  if (key == 'd') {
+    circlePosX += 100;
+  }
 }
