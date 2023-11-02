@@ -8,13 +8,13 @@
 // Setup the application
 void setup() {
   size(500, 500);
-  makeTiles();
 }
 
+// Circle positions
 int circlePosX = 50;
 int circlePosY = 50;
 
-// the stuff that calls the lame functions
+// Calling the functions
 void draw() {
   makeTiles();
   drawSqurs();
