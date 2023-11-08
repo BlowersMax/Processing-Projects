@@ -46,16 +46,10 @@ void drawScoreBar() {
 
 // Check if players have tagged
 void isTagged() {
-  if (player1PosX == player2PosX && player1PosY == player2PosY) {
-    isTouch = true;
-  } else {
-    isTouch = false;
-  }
-  
-  if (isTouch == true) {
-    contactCounter += 1;
-  } else {
+  if (player1PosX != player2PosX && player1PosY != player2PosY) {
     return;
+  } else {
+     contactCounter = contactCounter + 1;
   }
 }
 
@@ -110,5 +104,7 @@ void keyReleased() {
     } else {
       player2PosX += 64;
     }
+  } else {
+    println(key);
   }
 }
