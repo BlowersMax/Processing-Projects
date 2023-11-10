@@ -1,13 +1,13 @@
+/*
+ * Author: Max Blowers
+ * URL: https://maxblowers.dev/
+ * Description:
+ *    A simple fun tag game that works.
+ */ 
+
 void setup() {
   size(640, 640);
-}
-
-void draw() {
-  background(#86C9FF);
-  drawPlayingField();
-  drawPlayers();
-  drawScoreBar();
-  isTagged();
+  textSize(40);
 }
 
 int player1PosX = 32;
@@ -16,10 +16,18 @@ int player1PosY = 30;
 int player2PosX = 608;
 int player2PosY = 570;
 
-boolean isTouch = false;
 int contactCounter = 0;
 
+void draw() {
+  drawPlayingField();
+  drawPlayers();
+  drawScoreBar();
+  isTagged(player1PosX, player1PosY, player2PosX, player2PosY);
+}
+
 void drawPlayingField() {
+  background(#86C9FF);
+
   for (int i = 0; i <= 9; i += 1) {
     stroke(#9B4D46);
     strokeWeight(2);
@@ -41,29 +49,22 @@ void drawScoreBar() {
   fill(#555050);
   rect(0, 600, 640, 40);
   fill(#ffffff);
-  text(contactCounter, 320, 620);
+  text(contactCounter, 320, 632);
 }
 
 // Check if players have tagged
-void isTagged() {
-  if (player1PosX == player2PosX && player1PosY == player2PosY) {
-    isTouch = true;
-  } else {
-    isTouch = false;
-  }
-
-  if (isTouch == true) {
+void isTagged(int p1X, int p1Y, int p2X, int p2Y) {
+  println(p1X, p1Y, p2X, p2Y);
+  if (p1X == p2X && p1Y == p2Y) {
+    text("Tag, you're it!", 225, 300);
     contactCounter += 1;
-    isTouch = false;
-    return;
-  } else {
-    return;
   }
 }
 
 // move players
 void keyReleased() {
   // Player 1 movement
+  isTagged(player1PosX, player1PosY, player2PosX, player2PosY);
   if (key == 'w') {
     if (player1PosY < 40) {
       return;
