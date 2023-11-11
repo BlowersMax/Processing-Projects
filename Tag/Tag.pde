@@ -3,7 +3,7 @@
  * URL: https://maxblowers.dev/
  * Description:
  *    A simple fun tag game that works.
- */ 
+ */
 
 void setup() {
   size(640, 640);
@@ -17,12 +17,14 @@ int player2PosX = 608;
 int player2PosY = 570;
 
 int contactCounter = 0;
+boolean isCurrentlyTagged = false;
 
 void draw() {
   drawPlayingField();
   drawPlayers();
   drawScoreBar();
   isTagged(player1PosX, player1PosY, player2PosX, player2PosY);
+  displayWin();
 }
 
 void drawPlayingField() {
@@ -54,17 +56,29 @@ void drawScoreBar() {
 
 // Check if players have tagged
 void isTagged(int p1X, int p1Y, int p2X, int p2Y) {
-  println(p1X, p1Y, p2X, p2Y);
-  if (p1X == p2X && p1Y == p2Y) {
+  if (p1X == p2X && p1Y == p2Y && !isCurrentlyTagged) {
     text("Tag, you're it!", 225, 300);
     contactCounter += 1;
+    isCurrentlyTagged = true;
+  } else if (p1X != p2X || p1Y != p2Y) {
+    isCurrentlyTagged = false;
   }
 }
 
+void displayWin() {
+  if (isCurrentlyTagged) {
+    text("Tag, you're it!", 225, 300);
+  } else {
+    return;
+  }
+}
+
+
 // move players
 void keyReleased() {
-  // Player 1 movement
+  // Checking tag here too just to be sure
   isTagged(player1PosX, player1PosY, player2PosX, player2PosY);
+  // Player 1 movement
   if (key == 'w') {
     if (player1PosY < 40) {
       return;
