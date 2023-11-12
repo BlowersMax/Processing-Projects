@@ -5,11 +5,13 @@
  *    A simple fun tag game that works.
  */
 
+// Setup and draw the canvas
 void setup() {
   size(640, 640);
   textSize(40);
 }
 
+// All of the "state" needed to make sure the game works
 int player1PosX = 32;
 int player1PosY = 30;
 
@@ -19,17 +21,25 @@ int player2PosY = 570;
 int contactCounter = 0;
 boolean isCurrentlyTagged = false;
 
+// Draw the field, platers, scoreboard, and check tag and win.
 void draw() {
+  // the Field
   drawPlayingField();
-  drawPlayers();
+
+  // Draw Players
+  drawPlayer1(player1PosX, player1PosY);
+  drawPlayer2(player2PosX, player2PosY);
+
+  // Bottom UI and win conditions
   drawScoreBar();
   isTagged(player1PosX, player1PosY, player2PosX, player2PosY);
   displayWin();
 }
 
+
 void drawPlayingField() {
   background(#86C9FF);
-
+  // Lines to create the grid
   for (int i = 0; i <= 9; i += 1) {
     stroke(#9B4D46);
     strokeWeight(2);
@@ -38,12 +48,15 @@ void drawPlayingField() {
   }
 }
 
-void drawPlayers() {
-  // Player 1
+// Draw player 1
+void drawPlayer1(int x, int y) {
   fill(#F9FA49);
-  ellipse(player1PosX, player1PosY, 55, 55);
-  // Player 2
-  ellipse(player2PosX, player2PosY, 55, 55);
+  ellipse(x, y, 55, 55);
+}
+
+void drawPlayer2(int x, int y) {
+  fill(#F9FA49);
+  ellipse(x, y, 55, 55);
 }
 
 // Create the scorebar
@@ -57,7 +70,6 @@ void drawScoreBar() {
 // Check if players have tagged
 void isTagged(int p1X, int p1Y, int p2X, int p2Y) {
   if (p1X == p2X && p1Y == p2Y && !isCurrentlyTagged) {
-    text("Tag, you're it!", 225, 300);
     contactCounter += 1;
     isCurrentlyTagged = true;
   } else if (p1X != p2X || p1Y != p2Y) {
@@ -65,7 +77,9 @@ void isTagged(int p1X, int p1Y, int p2X, int p2Y) {
   }
 }
 
+// Display the win text if it is detected that a tag was made
 void displayWin() {
+  fill(#0A23F5);
   if (isCurrentlyTagged) {
     text("Tag, you're it!", 225, 300);
   } else {
@@ -78,7 +92,7 @@ void displayWin() {
 void keyReleased() {
   // Checking tag here too just to be sure
   isTagged(player1PosX, player1PosY, player2PosX, player2PosY);
-  // Player 1 movement
+  // Player 1 movement & checking bounds
   if (key == 'w') {
     if (player1PosY < 40) {
       return;
@@ -102,7 +116,7 @@ void keyReleased() {
       return;
     } else {
       player1PosX += 64;
-    }
+    }   // Player 2 movement & checking bounds
   } else if (key == 'i') {
     if (player2PosY < 40) {
       return;
@@ -127,7 +141,5 @@ void keyReleased() {
     } else {
       player2PosX += 64;
     }
-  } else {
-    println(key);
   }
 }
