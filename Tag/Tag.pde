@@ -50,11 +50,12 @@ void drawPlayingField() {
 
 // Draw player 1
 void drawPlayer1(int x, int y) {
-  fill(#F9FA49);
+  fill(#FFE45A);
   ellipse(x, y, 55, 55);
   strokeWeight(5);
   line(x-10, y-10, x-10, y);
   line(x+10, y-10, x+10, y);
+  line(x+10, y+10, x-10, y+10);
   strokeWeight(2);
 }
 
