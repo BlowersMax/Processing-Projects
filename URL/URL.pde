@@ -7,6 +7,8 @@ void setup() {
 String inputUrl = "";
 Boolean parseUrl = false;
 
+
+
 void draw() {
   text("Enter URL:", 20, 30);
   text(inputUrl, 140, 30);
