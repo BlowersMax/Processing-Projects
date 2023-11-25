@@ -8,19 +8,37 @@ String inputUrl = "";
 Boolean parseUrl = false;
 
 
-
 void draw() {
-  text("Enter URL:", 20, 30);
-  text(inputUrl, 140, 30);
+  drawAllText();
+  parsley();
 }
 
 void keyPressed() {
   if (key == BACKSPACE) {
-    println(key);
+    return;
   } else if (keyCode == SHIFT) {
-    println(key);
+    return;
+  } else if (keyCode == ENTER) {
+    parseUrl = true;
   } else {
     inputUrl += key;
     println(inputUrl);
+  }
+}
+
+void drawAllText() {
+  text("URL: " + inputUrl, 20, 30);
+}
+
+// Parses the URL and returns the URL seperated if it's a valid URL. If not, tells user to input a proper URL.
+void parsley() {
+  if (parseUrl == true) {
+    println("Parsley!");
+    int protocolIndex = inputUrl.indexOf("http://");
+    println(protocolIndex);
+    parseUrl = false;
+    background(100);
+  } else {
+    return;
   }
 }
